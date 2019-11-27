@@ -21,8 +21,6 @@ def test(paramPath=r"work/Model/model1/epochs=17",
     batch_size = 2
 
     def nms(data, threshold):
-        # data type = numpy ,shape = N,6   [x1, y1, x2, y2, score, cls]
-        # print("before ",data)
         scores = data[:, 4]
         x1 = data[:, 0]
         y1 = data[:, 1]
@@ -45,8 +43,6 @@ def test(paramPath=r"work/Model/model1/epochs=17",
             iou = i / (areas[index[0]] + areas[index[1:]] - i)
             idx = iou < threshold
             index = index[1:][idx]
-
-        # print("after ",np.array(res))
         return res
 
     def testGenerator(testPath):
